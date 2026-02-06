@@ -17,13 +17,20 @@ st.set_page_config(page_title="Vocab Tester", layout="wide")
 # =========================
 # Helpers: loading sets
 # =========================
+import re
+
+def set_sort_key(p: Path) -> int:
+    m = re.match(r"set(\d+)$", p.stem.lower())
+    return int(m.group(1)) if m else 10**12  # non-matching names go last
+
+
 @st.cache_data
 def list_set_files():
     if not SETS_DIR.exists():
         return []
 
     sets = []
-    for path in sorted(SETS_DIR.glob("*.json")):
+    for path in sorted(SETS_DIR.glob("*.json"), key=set_sort_key):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
             title = data.get("title", path.stem)
@@ -99,7 +106,7 @@ labels = [f"{s['id']} — {s['title']}" for s in available_sets]
 label_to_id = {f"{s['id']} — {s['title']}": s["id"] for s in available_sets}
 
 # -------------------------
-# Set selection screen (no default)
+# Set selection screen (no default) — titles only + search
 # -------------------------
 if "selected_set_id" not in st.session_state:
     st.session_state.selected_set_id = None
@@ -107,16 +114,31 @@ if "selected_set_id" not in st.session_state:
 if st.session_state.selected_set_id is None:
     st.subheader("Choose a quiz set")
 
-    chosen_label = st.selectbox(
+    titles = [s["title"] for s in available_sets]
+
+    # Guard: titles must be unique if you want "title only" in the dropdown
+    seen = set()
+    dupes = sorted({t for t in titles if (t in seen) or (seen.add(t) is None and False)})
+    if dupes:
+        st.error("Duplicate set titles found. Titles must be unique if the dropdown shows only titles.")
+        st.write("Duplicate titles:", dupes)
+        st.stop()
+
+    title_to_id = {s["title"]: s["id"] for s in available_sets}
+
+    q = st.text_input("Search titles")
+    filtered_titles = [t for t in titles if q.lower() in t.lower()]
+
+    chosen_title = st.selectbox(
         "Select a set",
-        options=["(Choose one)"] + labels,
+        options=["(Choose one)"] + filtered_titles,
         index=0,
         key="set_choice_first"
     )
 
-    if chosen_label != "(Choose one)":
+    if chosen_title != "(Choose one)":
         if st.button("Start", type="primary"):
-            set_id = label_to_id[chosen_label]
+            set_id = title_to_id[chosen_title]
             st.session_state.selected_set_id = set_id
             st.session_state.selected_set_data = load_set_by_id(set_id)
             make_new_quiz(set_id, st.session_state.selected_set_data)
