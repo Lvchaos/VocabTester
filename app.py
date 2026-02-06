@@ -95,7 +95,3 @@ if submitted:
             wrong_items.append(w)
 
     st.success(f"Score: {correct}/{len(quiz_words)}")
-
-    # Don’t reveal answers
-    if wrong_items:
-        st.warning("Incorrect items (answers not shown): " + ", ".join(wrong_items))
