@@ -137,7 +137,7 @@ st.sidebar.header(set_data["title"])
 st.sidebar.subheader("Word Bank")
 
 # change cols=1 if you want a single vertical column
-show_word_bank_vertical(set_data["word_bank"], cols=2)
+show_word_bank_vertical(sorted(set_data["word_bank"]), cols=2)
 
 st.sidebar.divider()
 
