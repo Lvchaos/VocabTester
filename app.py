@@ -2,9 +2,36 @@ import random
 import time
 import streamlit as st
 
-# --- your WORD_BANK and QUESTION_BANK here ---
-# WORD_BANK = [...]
-# QUESTION_BANK = {...}
+
+WORD_BANK = [
+    "authoritarian", "truism", "prudence", "astounded", "munificent",
+    "moderate", "mitigate", "callow", "duplicitous", "conducive",
+    "notorious", "astute", "versatile", "derivative", "assumptive",
+    "meticulous", "eulogy", "deride", "derive", "dogmatic",
+    "liberal", "integrity", "insipid", "compelling", "proponent",
+    "contempt", "incongruous", "exonerate", "renown", "enigma"
+]
+
+# You should provide (at least) one sentence per word.
+# Make sure each sentence has exactly one blank "_____" and is unambiguous.
+QUESTION_BANK = {
+    "eulogy": "She delivered a moving _____ at her grandfather’s funeral.",
+    "authoritarian": "The country fell under an _____ regime that censored the press and jailed critics.",
+    "proponent": "He is a strong _____ of renewable energy and publicly campaigns for it.",
+    "derive": "From these results, we can _____ a clear relationship between dosage and response.",
+    "munificent": "A _____ patron funded the scholarship program without seeking recognition.",
+    "truism": "Saying “practice makes perfect” is a _____ that offers little new insight.",
+    "deride": "Some commentators began to _____ the proposal without addressing its evidence.",
+    "incongruous": "The cheerful music felt _____ in a scene meant to be solemn.",
+    "moderate": "The chair had to _____ the debate to keep speakers from interrupting.",
+    "dogmatic": "His _____ certainty left no room for questions or alternatives.",
+    "astounded": "The researchers were _____ to discover the error had reversed the conclusion.",
+    "prudence": "Basic financial _____ suggests saving before making expensive purchases.",
+    "liberal": "A _____ democracy typically protects civil liberties and freedom of expression.",
+    "enigma": "The sudden disappearance remains an _____ even decades later.",
+    "renown": "After the discovery, she achieved international _____ in her field.",
+    # Add the rest of your words here...
+}
 
 IGNORE_CASE = True
 N_QUESTIONS = 15
