@@ -1,0 +1,43 @@
+{
+  "title": "Set 002 (25 questions)",
+  "word_bank": [
+    "diffident", "prophetic", "conformity", "distribution", "authoritative",
+    "conformist", "collaborating", "debilitate", "contentious", "reticent",
+    "authoritarian", "truism", "prudence", "astounded", "munificent",
+    "moderate", "mitigate", "callow", "duplicitous", "conducive",
+    "notorious", "astute", "versatile", "derivative", "assumptive",
+    "meticulous", "eulogy", "deride", "derive", "dogmatic",
+    "liberal", "integrity", "insipid", "compelling", "proponent",
+    "contempt", "incongruous", "exonerate", "renown", "enigma",
+    "enigmatic", "esoteric", "embellishment", "denounce", "magnanimous",
+    "benevolent", "distorted", "compound", "alleviate", "wary"
+  ],
+  
+  "question_bank": {
+    "diffident": "She was too _____ to raise her hand because she doubted her answer was correct.",
+    "prophetic": "His _____ prediction in 2019 that the company would collapse proved accurate two years later.",
+    "conformity": "Peer pressure pushed students toward _____, even when they privately disagreed.",
+    "distribution": "The histogram shows the age _____ of participants, with most clustered in their 20s.",
+    "authoritative": "For citation, use an _____ source such as an official guideline or a peer-reviewed textbook.",
+    "collaborating": "The two laboratories are _____ on a joint manuscript and will share first authorship.",
+    "debilitate": "A prolonged high fever can _____ patients and slow their recovery.",
+    "contentious": "The city council meeting became _____, with members arguing over nearly every motion.",
+    "reticent": "Under legal advice, she remained _____ about the incident and declined to discuss details.",
+    "truism": "Calling the plan “a learning experience” was a _____ that added no useful information.",
+    "prudence": "Basic financial _____ suggests building an emergency fund before investing in risky assets.",
+    "munificent": "The university received a _____ donation of ₩1 billion to endow a new scholarship fund.",
+    "mitigate": "Installing backup servers can _____ the risk of data loss during an outage.",
+    "callow": "The _____ intern spoke confidently but lacked any real experience with the procedure.",
+    "duplicitous": "The witness was _____, giving one version of events in public and another in private.",
+    "conducive": "A quiet, well-lit workspace is _____ to focused studying.",
+    "astute": "An _____ negotiator noticed a hidden penalty clause before signing the contract.",
+    "versatile": "A _____ pocketknife can be used to cut rope, open packages, and tighten small screws.",
+    "derivative": "Critics called the sequel _____ because it reused the original plot without new ideas.",
+    "meticulous": "Her _____ bookkeeping included matching every receipt to a specific invoice number.",
+    "eulogy": "He delivered a heartfelt _____ at the memorial service.",
+    "deride": "Instead of addressing the evidence, the trolls chose to _____ the author’s accent online.",
+    "incongruous": "The party hats felt _____ at a ceremony intended to be solemn and reflective.",
+    "exonerate": "The newly discovered DNA evidence helped _____ the defendant of the charges.",
+    "wary": "After being scammed once, she was _____ of signing any contract without reading the fine print."
+  }
+}
