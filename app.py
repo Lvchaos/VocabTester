@@ -12,6 +12,15 @@ SETS_DIR = Path(__file__).parent / "sets"
 IGNORE_CASE = True
 
 st.set_page_config(page_title="Vocab Tester", layout="wide")
+st.markdown(
+    """
+    <style>
+    /* Hide "Press Enter to submit/apply" under inputs */
+    div[data-testid="InputInstructions"] { display: none; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 # =========================
