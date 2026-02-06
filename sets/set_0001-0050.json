@@ -1,6 +1,6 @@
 {
-  "title": "01-50"
-  "word bank": [
+  "title": "001-050",
+  "word_bank": [
     "undermine", "convention", "comprehensive", "beneficent", "foster",
     "distinction", "redundant", "diminish", "endorsed", "substantiated",
     "negligible", "characterize", "provocative", "advocate", "proliferate",
@@ -11,33 +11,32 @@
     "exacerbate", "perceive", "prosaic", "preserve", "engaging",
     "tenacious", "digressing", "scrutiny", "portray", "commend",
     "solicitous", "convoluted", "capricious", "inhibit", "altruistic"
-]
-
- "question_bank": {
-    "undermine": "The leaked memo threatened to _____ public confidence in the agency’s investigation.",
+  ],
+  "question_bank": {
+    "undermine": "The insider tried to _____ the investigation by deleting key files before auditors arrived.",
     "comprehensive": "The manual is _____, detailing every step from installation to troubleshooting.",
-    "beneficent": "A _____ donor paid the medical bills of several strangers without revealing her name.",
+    "beneficent": "Public health officials credited a _____ vaccination campaign with sharply reducing child mortality.",
     "distinction": "The contract draws a clear _____ between temporary staff and permanent employees.",
     "redundant": "Remove the _____ paragraph; it repeats the same point almost word for word.",
     "substantiated": "The allegation was _____ by lab records and time-stamped security footage.",
-    "negligible": "The difference in outcomes was _____, so we treated the two methods as effectively equivalent.",
-    "characterize": "Historians often _____ the era as a period of rapid reform and urban growth.",
+    "negligible": "The toxin level was _____—below the assay’s limit of detection.",
+    "characterize": "The paper aims to _____ the condition as primarily inflammatory rather than infectious.",
     "proliferate": "Without regulation, misinformation can _____ across social media in a matter of hours.",
     "speculative": "His theory was still _____, with no direct evidence to confirm it.",
     "disparage": "It is unfair to _____ the candidate’s research simply because she is early in her career.",
-    "verbose": "The introduction was so _____ that readers struggled to find the main claim.",
+    "verbose": "The introduction was so _____ that readers struggled to locate the main claim.",
     "vindicated": "When the missing receipts were found, the accountant felt _____.",
-    "intricate": "The watch contained an _____ mechanism with dozens of interlocking gears.",
+    "intricate": "The jeweler showed an _____ filigree pattern that had been carved by hand.",
     "belie": "His casual smile seemed to _____ the seriousness of the situation.",
     "transient": "The side effect was _____ and resolved within a few minutes.",
     "tranquility": "After the retreat, she felt a rare sense of _____ that lasted for days.",
-    "depict": "The mural aims to _____ daily life in the city during the 1920s.",
+    "depict": "Figure 2 is designed to _____ the experimental workflow step by step.",
     "detract": "Loud background music can _____ from the speaker’s message.",
-    "resilient": "Even after repeated rejections, he stayed _____ and kept applying.",
+    "resilient": "The network is _____; it reroutes traffic automatically after a router fails.",
     "ambivalent": "She was _____ about joining the program—interested in the opportunities but wary of the workload.",
     "exacerbate": "Ignoring early symptoms can _____ the illness and make recovery harder.",
     "prosaic": "The meeting was mostly _____, focusing on routine updates and scheduling.",
-    "tenacious": "Despite exhaustion, the climber remained _____ and refused to turn back.",
+    "tenacious": "The attorney was _____, refusing to drop the case despite repeated delays.",
     "scrutiny": "The report is under _____ for possible data fabrication."
   }
-]
+}
