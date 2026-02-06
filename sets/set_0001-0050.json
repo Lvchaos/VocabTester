@@ -1,0 +1,43 @@
+{
+  "title": "01-50"
+  "word bank": [
+    "undermine", "convention", "comprehensive", "beneficent", "foster",
+    "distinction", "redundant", "diminish", "endorsed", "substantiated",
+    "negligible", "characterize", "provocative", "advocate", "proliferate",
+    "prosperous", "speculative", "disparage", "verbose", "discerning",
+    "vindicated", "intricate", "tranquil", "belie", "obscure",
+    "transient", "quirky", "tranquility", "trivial", "depict",
+    "commentator", "detract", "expressive", "resilient", "ambivalent",
+    "exacerbate", "perceive", "prosaic", "preserve", "engaging",
+    "tenacious", "digressing", "scrutiny", "portray", "commend",
+    "solicitous", "convoluted", "capricious", "inhibit", "altruistic"
+]
+
+ "question_bank": {
+    "undermine": "The leaked memo threatened to _____ public confidence in the agency’s investigation.",
+    "comprehensive": "The manual is _____, detailing every step from installation to troubleshooting.",
+    "beneficent": "A _____ donor paid the medical bills of several strangers without revealing her name.",
+    "distinction": "The contract draws a clear _____ between temporary staff and permanent employees.",
+    "redundant": "Remove the _____ paragraph; it repeats the same point almost word for word.",
+    "substantiated": "The allegation was _____ by lab records and time-stamped security footage.",
+    "negligible": "The difference in outcomes was _____, so we treated the two methods as effectively equivalent.",
+    "characterize": "Historians often _____ the era as a period of rapid reform and urban growth.",
+    "proliferate": "Without regulation, misinformation can _____ across social media in a matter of hours.",
+    "speculative": "His theory was still _____, with no direct evidence to confirm it.",
+    "disparage": "It is unfair to _____ the candidate’s research simply because she is early in her career.",
+    "verbose": "The introduction was so _____ that readers struggled to find the main claim.",
+    "vindicated": "When the missing receipts were found, the accountant felt _____.",
+    "intricate": "The watch contained an _____ mechanism with dozens of interlocking gears.",
+    "belie": "His casual smile seemed to _____ the seriousness of the situation.",
+    "transient": "The side effect was _____ and resolved within a few minutes.",
+    "tranquility": "After the retreat, she felt a rare sense of _____ that lasted for days.",
+    "depict": "The mural aims to _____ daily life in the city during the 1920s.",
+    "detract": "Loud background music can _____ from the speaker’s message.",
+    "resilient": "Even after repeated rejections, he stayed _____ and kept applying.",
+    "ambivalent": "She was _____ about joining the program—interested in the opportunities but wary of the workload.",
+    "exacerbate": "Ignoring early symptoms can _____ the illness and make recovery harder.",
+    "prosaic": "The meeting was mostly _____, focusing on routine updates and scheduling.",
+    "tenacious": "Despite exhaustion, the climber remained _____ and refused to turn back.",
+    "scrutiny": "The report is under _____ for possible data fabrication."
+  }
+]
