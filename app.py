@@ -89,7 +89,12 @@ def show_word_bank_vertical(words: list[str], cols: int = 2):
     cols = max(1, cols)
     columns = st.sidebar.columns(cols)
     for i, w in enumerate(words):
-        columns[i % cols].markdown(f"- **{w}**")
+        columns[i % cols].markdown(
+            f"<div style='margin:0; padding:0; line-height:1.25; "
+            f"white-space:normal; overflow-wrap:anywhere;'>"
+            f"• <b>{w}</b></div>",
+            unsafe_allow_html=True
+        )
 
 
 # =========================
