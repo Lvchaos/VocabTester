@@ -19,7 +19,6 @@ st.set_page_config(page_title="Vocab Tester", layout="wide")
 # =========================
 @st.cache_data
 def list_set_files():
-    """Return list of available set files with (id, title, path)."""
     if not SETS_DIR.exists():
         return []
 
@@ -28,7 +27,7 @@ def list_set_files():
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
             title = data.get("title", path.stem)
-            sets.append({"id": path.stem, "title": title, "path": str(path)})
+            sets.append({"id": path.stem, "title": title})
         except Exception:
             continue
     return sets
@@ -52,13 +51,6 @@ def load_set_by_id(set_id: str):
     return data
 
 
-def format_word_bank_5_per_line(words: list[str]) -> str:
-    lines = []
-    for i in range(0, len(words), 5):
-        lines.append(", ".join(words[i:i + 5]))
-    return "\n".join(lines)
-
-
 def clear_answer_keys(prefix: str = "ans_"):
     for k in list(st.session_state.keys()):
         if k.startswith(prefix):
@@ -69,23 +61,28 @@ def make_new_quiz(set_id: str, set_data: dict):
     """
     Use ALL questions in question_bank, shuffle order, store in session_state.
     """
-    word_bank = set_data["word_bank"]
-    question_bank = set_data["question_bank"]
+    qb = set_data["question_bank"]
 
-    # Eligible = words that exist in both places (keeps you safe if word_bank has extras)
-    eligible = [w for w in word_bank if w in question_bank]
+    # Show every question in question_bank (e.g., 25)
+    words = list(qb.keys())
 
-    if len(eligible) == 0:
-        raise ValueError(f"Set '{set_id}' has no usable questions (question_bank is empty?).")
-
-    # IMPORTANT: show all questions (25), not a random subset
     clear_answer_keys()
 
-    items = [{"word": w, "prompt": question_bank[w]} for w in eligible]
+    items = [{"word": w, "prompt": qb[w]} for w in words]
     random.shuffle(items)
 
     st.session_state.quiz_items = items
     st.session_state.started_at = int(time.time())
+
+
+def show_word_bank_vertical(words: list[str], cols: int = 2):
+    """
+    Display word bank vertically (one word per line), optionally split into columns.
+    """
+    cols = max(1, cols)
+    columns = st.sidebar.columns(cols)
+    for i, w in enumerate(words):
+        columns[i % cols].markdown(f"- **{w}**")
 
 
 # =========================
@@ -98,48 +95,62 @@ if not available_sets:
     st.error("No quiz sets found. Put your JSON files in a folder named 'sets' next to app.py.")
     st.stop()
 
-options = [f"{s['id']} — {s['title']}" for s in available_sets]
+labels = [f"{s['id']} — {s['title']}" for s in available_sets]
 label_to_id = {f"{s['id']} — {s['title']}": s["id"] for s in available_sets}
 
+# -------------------------
+# Set selection screen (no default)
+# -------------------------
 if "selected_set_id" not in st.session_state:
     st.session_state.selected_set_id = None
 
-
-def on_set_change():
-    chosen_label = st.session_state.set_choice
-    set_id = label_to_id[chosen_label]
-    st.session_state.selected_set_id = set_id
-
-    set_data = load_set_by_id(set_id)
-    st.session_state.selected_set_data = set_data
-
-    make_new_quiz(set_id, set_data)
-
-
-st.selectbox(
-    "Choose a quiz set",
-    options=options,
-    index=0,
-    key="set_choice",
-    on_change=on_set_change
-)
-
-# First load init
 if st.session_state.selected_set_id is None:
-    on_set_change()
+    st.subheader("Choose a quiz set")
 
+    chosen_label = st.selectbox(
+        "Select a set",
+        options=["(Choose one)"] + labels,
+        index=0,
+        key="set_choice_first"
+    )
+
+    if chosen_label != "(Choose one)":
+        if st.button("Start", type="primary"):
+            set_id = label_to_id[chosen_label]
+            st.session_state.selected_set_id = set_id
+            st.session_state.selected_set_data = load_set_by_id(set_id)
+            make_new_quiz(set_id, st.session_state.selected_set_data)
+            st.rerun()
+
+    st.stop()
+
+# -------------------------
+# Loaded set
+# -------------------------
 set_id = st.session_state.selected_set_id
 set_data = st.session_state.selected_set_data
 
 # =========================
-# Sidebar: Full word bank (all words), 5 per line
+# Sidebar: Word bank (vertical list)
 # =========================
 st.sidebar.header(set_data["title"])
 st.sidebar.subheader("Word Bank")
-st.sidebar.code(format_word_bank_5_per_line(set_data["word_bank"]))
+
+# change cols=1 if you want a single vertical column
+show_word_bank_vertical(set_data["word_bank"], cols=2)
+
+st.sidebar.divider()
 
 if st.sidebar.button("Start / New attempt (reshuffle)"):
     make_new_quiz(set_id, set_data)
+    st.rerun()
+
+if st.sidebar.button("Change quiz set"):
+    st.session_state.selected_set_id = None
+    st.session_state.selected_set_data = None
+    if "quiz_items" in st.session_state:
+        del st.session_state.quiz_items
+    clear_answer_keys()
     st.rerun()
 
 # Ensure quiz exists
@@ -153,8 +164,6 @@ quiz_items = st.session_state.quiz_items
 # =========================
 st.subheader("Questions")
 
-student_name = st.text_input("Student name / ID (required)", key="student_name")
-
 with st.form("quiz_form", clear_on_submit=False):
     for i, item in enumerate(quiz_items, start=1):
         st.markdown(f"**{i}.** {item['prompt']}")
@@ -164,10 +173,6 @@ with st.form("quiz_form", clear_on_submit=False):
     submitted = st.form_submit_button("Submit")
 
 if submitted:
-    if not student_name.strip():
-        st.error("Please enter your name / ID.")
-        st.stop()
-
     correct = 0
     for item in quiz_items:
         word = item["word"]
@@ -177,4 +182,4 @@ if submitted:
             correct += 1
 
     st.success("Submitted.")
-    st.success(f"Score: {correct}/{len(quiz_items)}")
+    st.success(f"{set_data['title']} — Score: {correct}/{len(quiz_items)}")
