@@ -19,10 +19,11 @@ st.set_page_config(page_title="Vocab Tester", layout="wide")
 # =========================
 import re
 
-def set_sort_key(p: Path) -> int:
-    m = re.match(r"set(\d+)$", p.stem.lower())
-    return int(m.group(1)) if m else 10**12  # non-matching names go last
-
+def set_sort_key(p: Path):
+    # Handles set001, set1, set0007, etc.
+    m = re.fullmatch(r"set(\d+)", p.stem.lower())
+    n = int(m.group(1)) if m else 10**12
+    return (n, p.stem.lower())  # ascending
 
 @st.cache_data
 def list_set_files():
@@ -38,7 +39,6 @@ def list_set_files():
         except Exception:
             continue
     return sets
-
 
 @st.cache_data
 def load_set_by_id(set_id: str):
@@ -106,7 +106,7 @@ labels = [f"{s['id']} — {s['title']}" for s in available_sets]
 label_to_id = {f"{s['id']} — {s['title']}": s["id"] for s in available_sets}
 
 # -------------------------
-# Set selection screen (no default) — titles only + search
+# Set selection screen (no default) — order by filename, display titles only
 # -------------------------
 if "selected_set_id" not in st.session_state:
     st.session_state.selected_set_id = None
@@ -114,20 +114,24 @@ if "selected_set_id" not in st.session_state:
 if st.session_state.selected_set_id is None:
     st.subheader("Choose a quiz set")
 
-    titles = [s["title"] for s in available_sets]
+    # IMPORTANT: titles are in filename order because available_sets is already sorted
+    titles_in_file_order = [s["title"] for s in available_sets]
 
-    # Guard: titles must be unique if you want "title only" in the dropdown
-    seen = set()
-    dupes = sorted({t for t in titles if (t in seen) or (seen.add(t) is None and False)})
-    if dupes:
-        st.error("Duplicate set titles found. Titles must be unique if the dropdown shows only titles.")
-        st.write("Duplicate titles:", dupes)
+    # Titles must be unique if you're displaying ONLY titles
+    title_to_id = {}
+    duplicates = []
+    for s in available_sets:
+        if s["title"] in title_to_id:
+            duplicates.append(s["title"])
+        else:
+            title_to_id[s["title"]] = s["id"]
+    if duplicates:
+        st.error("Duplicate titles found. Titles must be unique if the dropdown shows only titles.")
+        st.write("Duplicates:", sorted(set(duplicates)))
         st.stop()
 
-    title_to_id = {s["title"]: s["id"] for s in available_sets}
-
     q = st.text_input("Search titles")
-    filtered_titles = [t for t in titles if q.lower() in t.lower()]
+    filtered_titles = [t for t in titles_in_file_order if q.lower() in t.lower()]
 
     chosen_title = st.selectbox(
         "Select a set",
