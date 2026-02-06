@@ -109,7 +109,7 @@ def new_quiz(set_id: str):
 
 
 # -----------------------------
-# 3) UI: pick quiz set (buttons)
+# 3) UI: pick quiz set (single click)
 # -----------------------------
 st.title("Vocab Tester")
 
@@ -118,19 +118,21 @@ if "selected_set" not in st.session_state:
 
 if st.session_state.selected_set is None:
     st.subheader("Choose a quiz set")
+
     c1, c2 = st.columns(2)
     with c1:
-        if st.button(QUIZ_SETS["set1"]["title"], use_container_width=True):
+        if st.button(QUIZ_SETS["set1"]["title"], use_container_width=True, key="pick_set1"):
             st.session_state.selected_set = "set1"
             new_quiz("set1")
+            st.rerun()
+
     with c2:
-        if st.button(QUIZ_SETS["set2"]["title"], use_container_width=True):
+        if st.button(QUIZ_SETS["set2"]["title"], use_container_width=True, key="pick_set2"):
             st.session_state.selected_set = "set2"
             new_quiz("set2")
+            st.rerun()
 
-    st.info("After choosing a set, the quiz will generate 15 questions in a shuffled order.")
     st.stop()
-
 
 # -----------------------------
 # 4) Sidebar: always-visible word bank (all 30)
