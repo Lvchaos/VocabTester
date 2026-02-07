@@ -149,15 +149,16 @@ if "selected_set_id" not in st.session_state:
     st.session_state.selected_set_id = None
 
 if st.session_state.selected_set_id is None:
-    h1, h2 = st.columns([4, 1])
-    with h1:
+    h, b, _ = st.columns([2.2, 1.0, 8.0])  # tweak numbers if you want tighter/looser
+
+    with h:
         st.subheader("Choose a quiz set")
-    with h2:
-        st.write("")  # small vertical align tweak
-        if st.button("Reload"):
+
+    with b:
+        st.write("")  # small vertical alignment nudge
+        if st.button("Reload test list", key="reload_test_list"):
             st.cache_data.clear()
             st.rerun()
-
 
     # IMPORTANT: titles are in filename order because available_sets is already sorted
     titles_in_file_order = [s["title"] for s in available_sets]
@@ -188,9 +189,6 @@ if st.session_state.selected_set_id is None:
             key="set_choice_first"
         )
 
-        if st.button("Reload test list"):
-            st.cache_data.clear()
-            st.rerun()
 
         if chosen_title != "(Choose one)":
             if st.button("Start", type="primary"):
