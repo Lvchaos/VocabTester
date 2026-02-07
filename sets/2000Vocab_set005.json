@@ -1,0 +1,42 @@
+{
+  "title": "2000+Vocab_201-250",
+  "word_bank": [
+    "veneration", "insolence", "obstinate", "eccentric", "authenticated",
+    "condoned", "equanimity", "pernicious", "cultivate", "civil",
+    "tactful", "ornate", "submission", "inconsequential", "chaos",
+    "initiation", "anachronistic", "replicate", "affluent", "gregarious",
+    "reclusive", "ethics", "patronizing", "censure", "satire",
+    "abstruse", "stratagem", "reinforce", "flagrant", "plague",
+    "discredit", "articulate", "exacting", "frustrate", "disposition",
+    "thwart", "baffled", "lavish", "loquacious", "succinct",
+    "aloof", "undemonstrative", "demonstrative", "disingenuous", "perfunctory",
+    "lethargic", "exhaustive", "animate", "caustic", "dissenting"
+  ],
+  "question_bank": {
+    "veneration": "In the temple, visitors spoke in whispers and bowed before the statue. Their actions showed deep _____ rather than casual respect.",
+    "insolence": "The intern rolled his eyes and interrupted the attending mid-sentence. His _____ shocked the entire team because it was openly rude.",
+    "obstinate": "Even after three independent tests proved the result, he refused to change his mind. He remained _____, clinging to his original view.",
+    "authenticated": "The museum requested laboratory analysis and verified records before displaying the manuscript. Only after it was _____ did they label it genuine.",
+    "equanimity": "When the experiment failed in front of the audience, she did not panic or lash out. She handled the setback with remarkable _____.",
+    "pernicious": "The policy sounded harmless at first, but it slowly undermined trust and safety over time. Its effects were _____, damaging in a subtle, lasting way.",
+    "cultivate": "To build strong trainees, the program tries to _____ curiosity and discipline. The goal is to develop those qualities intentionally over time.",
+    "civil": "They strongly disagreed about the plan, but the discussion stayed _____. No one shouted or insulted the other side.",
+    "tactful": "He rejected the proposal without embarrassing the junior colleague who suggested it. His response was firm but _____.",
+    "ornate": "The hall was covered with gold trim, elaborate carvings, and decorative arches. The style was clearly _____ rather than plain.",
+    "submission": "After weeks of revisions, the team prepared the final manuscript for _____. They were ready to send it formally to the journal for review.",
+    "inconsequential": "They argued for an hour about the font size on a slide. In the grand scheme, the issue was _____.",
+    "chaos": "When the power failed during the storm, schedules collapsed and instructions contradicted each other. The clinic descended into _____.",
+    "initiation": "Before she could access the lab, she completed safety training and received her badge. This onboarding marked her official _____.",
+    "anachronistic": "The film set in 1800 showed characters using smartphones. The detail was glaringly _____ for the historical period.",
+    "replicate": "To confirm the finding, the lab asked an independent team to _____ the experiment. They needed the same result under the same conditions.",
+    "affluent": "The neighborhood is visibly _____, with private schools and high-end homes. Residents generally have significant financial resources.",
+    "gregarious": "He chats easily with strangers and thrives at crowded gatherings. His _____ personality makes him naturally social.",
+    "reclusive": "After the scandal, the author avoided interviews and stopped appearing in public. She became increasingly _____.",
+    "ethics": "The committee reviewed consent procedures and data privacy before approving the study. They focused on research _____.",
+    "patronizing": "He praised her idea with a smirk and spoke as if she were a child. The tone was _____, not genuinely respectful.",
+    "censure": "The board voted to formally criticize the official for misusing funds. They decided to _____ him in a public statement.",
+    "satire": "The cartoon mocked corruption by exaggerating politicians’ promises to absurd extremes. It used _____ to criticize through humor.",
+    "abstruse": "The textbook chapter was so _____ that even experts had to reread each paragraph. The writing was difficult to understand, not merely advanced.",
+    "stratagem": "To distract the guards, they staged a loud argument near the front gate. The diversion was a deliberate _____."
+  }
+}
