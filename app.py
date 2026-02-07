@@ -179,13 +179,11 @@ if st.session_state.selected_set_id is None:
 
     if chosen_title != "(Choose one)":
         if st.button("Start", type="primary"):
-            st.cache_data.clear()  # <- refresh JSON + set list cache
-
             set_id = title_to_id[chosen_title]
             st.session_state.selected_set_id = set_id
 
             set_path = SETS_DIR / f"{set_id}.json"
-            set_data = load_set_by_id(set_id, file_mtime_ns(set_path))
+            set_data = load_set_by_id(set_id, file_mtime_ns(set_path))  # reload single JSON
             st.session_state.selected_set_data = set_data
 
             make_new_quiz(set_id, set_data)
@@ -213,14 +211,13 @@ show_word_bank_vertical(sorted(set_data["word_bank"]), cols=2)
 st.sidebar.divider()
 
 if st.sidebar.button("Start / New attempt (reshuffle)"):
-    st.cache_data.clear()  # <- refresh JSON
-
     set_path = SETS_DIR / f"{set_id}.json"
-    set_data = load_set_by_id(set_id, file_mtime_ns(set_path))
+    set_data = load_set_by_id(set_id, file_mtime_ns(set_path))  # reload single JSON
     st.session_state.selected_set_data = set_data
 
     make_new_quiz(set_id, set_data)
     st.rerun()
+    
 
 if st.sidebar.button("Change quiz set"):
     st.session_state.pop("last_result", None)
