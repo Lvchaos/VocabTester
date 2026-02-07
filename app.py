@@ -2,7 +2,7 @@ import json
 import random
 import time
 from pathlib import Path
- 
+
 import streamlit as st
 
 # =========================
@@ -150,6 +150,12 @@ if "selected_set_id" not in st.session_state:
 
 if st.session_state.selected_set_id is None:
     st.subheader("Choose a quiz set")
+
+ col1, col2 = st.columns([1, 4])
+with col1:
+    if st.button("Reload test list"):
+        st.cache_data.clear()
+        st.rerun()
 
     # IMPORTANT: titles are in filename order because available_sets is already sorted
     titles_in_file_order = [s["title"] for s in available_sets]
