@@ -167,15 +167,9 @@ if st.session_state.selected_set_id is None:
         st.write("Duplicates:", sorted(set(duplicates)))
         st.stop()
 
-    # Layout: small left column for reload, big right column for inputs
-    col_reload, col_main = st.columns([1, 4])
+    left, _ = st.columns([2, 5])  # adjust left width: [1.8, 6] if you want narrower
 
-    with col_reload:
-        if st.button("Reload test list"):
-            st.cache_data.clear()
-            st.rerun()
-
-    with col_main:
+    with left:
         q = st.text_input("Search titles")
         filtered_titles = [t for t in titles_in_file_order if q.lower() in t.lower()]
 
@@ -185,6 +179,10 @@ if st.session_state.selected_set_id is None:
             index=0,
             key="set_choice_first"
         )
+
+        if st.button("Reload test list"):
+            st.cache_data.clear()
+            st.rerun()
 
         if chosen_title != "(Choose one)":
             if st.button("Start", type="primary"):
@@ -199,7 +197,6 @@ if st.session_state.selected_set_id is None:
                 st.rerun()
 
     st.stop()
-
 # -------------------------
 # Loaded set
 # -------------------------
