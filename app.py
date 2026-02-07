@@ -29,10 +29,24 @@ st.markdown(
 import re
 
 def set_sort_key(p: Path):
-    # Handles set001, set1, set0007, etc.
-    m = re.fullmatch(r"set(\d+)", p.stem.lower())
-    n = int(m.group(1)) if m else 10**12
-    return (n, p.stem.lower())  # ascending
+    stem = p.stem.lower()
+
+    # Examples:
+    # set001               -> prefix=None, setnum=1
+    # 2000vocab_set001     -> prefix=2000, setnum=1
+    # 1500vocab_set010     -> prefix=1500, setnum=10
+
+    m_set = re.search(r"set(\d+)$", stem)          # grab trailing set###
+    setnum = int(m_set.group(1)) if m_set else 10**12
+
+    m_prefix = re.match(r"(\d+)", stem)            # grab leading number if present
+    prefix = int(m_prefix.group(1)) if m_prefix else 10**12
+
+    # Primary sort: prefix (1500 before 2000; plain 'set###' goes last by default)
+    # Secondary: set number
+    # Tertiary: full stem for stability
+    return (prefix, setnum, stem)
+
 
 @st.cache_data
 def list_set_files():
