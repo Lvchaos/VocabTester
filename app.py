@@ -151,12 +151,6 @@ if "selected_set_id" not in st.session_state:
 if st.session_state.selected_set_id is None:
     st.subheader("Choose a quiz set")
 
-col1, col2 = st.columns([1, 4])
-with col1:
-    if st.button("Reload test list"):
-        st.cache_data.clear()
-        st.rerun()
-
     # IMPORTANT: titles are in filename order because available_sets is already sorted
     titles_in_file_order = [s["title"] for s in available_sets]
 
@@ -173,27 +167,36 @@ with col1:
         st.write("Duplicates:", sorted(set(duplicates)))
         st.stop()
 
-    q = st.text_input("Search titles")
-    filtered_titles = [t for t in titles_in_file_order if q.lower() in t.lower()]
+    # Layout: small left column for reload, big right column for inputs
+    col_reload, col_main = st.columns([1, 4])
 
-    chosen_title = st.selectbox(
-        "Select a set",
-        options=["(Choose one)"] + filtered_titles,
-        index=0,
-        key="set_choice_first"
-    )
-
-    if chosen_title != "(Choose one)":
-        if st.button("Start", type="primary"):
-            set_id = title_to_id[chosen_title]
-            st.session_state.selected_set_id = set_id
-
-            set_path = SETS_DIR / f"{set_id}.json"
-            set_data = load_set_by_id(set_id, file_mtime_ns(set_path))  # reload single JSON
-            st.session_state.selected_set_data = set_data
-
-            make_new_quiz(set_id, set_data)
+    with col_reload:
+        if st.button("Reload test list"):
+            st.cache_data.clear()
             st.rerun()
+
+    with col_main:
+        q = st.text_input("Search titles")
+        filtered_titles = [t for t in titles_in_file_order if q.lower() in t.lower()]
+
+        chosen_title = st.selectbox(
+            "Select a set",
+            options=["(Choose one)"] + filtered_titles,
+            index=0,
+            key="set_choice_first"
+        )
+
+        if chosen_title != "(Choose one)":
+            if st.button("Start", type="primary"):
+                set_id = title_to_id[chosen_title]
+                st.session_state.selected_set_id = set_id
+
+                set_path = SETS_DIR / f"{set_id}.json"
+                set_data = load_set_by_id(set_id, file_mtime_ns(set_path))  # reload single JSON
+                st.session_state.selected_set_data = set_data
+
+                make_new_quiz(set_id, set_data)
+                st.rerun()
 
     st.stop()
 
