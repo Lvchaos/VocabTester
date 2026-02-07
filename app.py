@@ -9,6 +9,15 @@ import streamlit as st
 # Config
 # =========================
 SETS_DIR = Path(__file__).parent / "sets"
+def sets_signature():
+    if not SETS_DIR.exists():
+        return tuple()
+    paths = sorted(SETS_DIR.glob("*.json"), key=set_sort_key)
+    return tuple((p.name, p.stat().st_mtime_ns) for p in paths)
+
+def file_mtime_ns(path: Path) -> int:
+    return path.stat().st_mtime_ns
+
 IGNORE_CASE = True
 
 st.set_page_config(page_title="Vocab Tester", layout="wide")
@@ -21,7 +30,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
 
 # =========================
 # Helpers: loading sets
@@ -49,7 +57,7 @@ def set_sort_key(p: Path):
 
 
 @st.cache_data
-def list_set_files():
+def list_set_files(_sig):
     if not SETS_DIR.exists():
         return []
 
@@ -64,7 +72,7 @@ def list_set_files():
     return sets
 
 @st.cache_data
-def load_set_by_id(set_id: str):
+def load_set_by_id(set_id: str, _mtime_ns: int):
     path = SETS_DIR / f"{set_id}.json"
     data = json.loads(path.read_text(encoding="utf-8"))
 
@@ -126,7 +134,7 @@ def show_word_bank_vertical(words: list[str], cols: int = 2):
 # =========================
 st.title("Vocab Tester")
 
-available_sets = list_set_files()
+available_sets = list_set_files(sets_signature())
 if not available_sets:
     st.error("No quiz sets found. Put your JSON files in a folder named 'sets' next to app.py.")
     st.stop()
@@ -173,7 +181,10 @@ if st.session_state.selected_set_id is None:
         if st.button("Start", type="primary"):
             set_id = title_to_id[chosen_title]
             st.session_state.selected_set_id = set_id
-            st.session_state.selected_set_data = load_set_by_id(set_id)
+
+            set_path = SETS_DIR / f"{set_id}.json"
+            st.session_state.selected_set_data = load_set_by_id(set_id, file_mtime_ns(set_path))
+
             make_new_quiz(set_id, st.session_state.selected_set_data)
             st.rerun()
 
@@ -183,7 +194,9 @@ if st.session_state.selected_set_id is None:
 # Loaded set
 # -------------------------
 set_id = st.session_state.selected_set_id
-set_data = st.session_state.selected_set_data
+set_path = SETS_DIR / f"{set_id}.json"
+set_data = load_set_by_id(set_id, file_mtime_ns(set_path))
+st.session_state.selected_set_data = set_data  # keep if you want
 
 # =========================
 # Sidebar: Word bank (vertical list)
@@ -207,6 +220,10 @@ if st.sidebar.button("Change quiz set"):
     if "quiz_items" in st.session_state:
         del st.session_state.quiz_items
     clear_answer_keys()
+    st.rerun()
+
+if st.sidebar.button("Refresh JSON now"):
+    st.cache_data.clear()
     st.rerun()
 
 # Ensure quiz exists
