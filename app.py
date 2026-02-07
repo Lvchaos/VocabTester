@@ -151,7 +151,7 @@ if "selected_set_id" not in st.session_state:
 if st.session_state.selected_set_id is None:
     st.subheader("Choose a quiz set")
 
-col1, col2 = st.columns([1, 4])
+col1, col2 = st.columns([1, 6])
 with col1:
     if st.button("Reload test list"):
         st.cache_data.clear()
