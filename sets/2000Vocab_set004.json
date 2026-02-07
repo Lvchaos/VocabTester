@@ -1,0 +1,42 @@
+{
+  "title": "2000+Vocab_151-200",
+  "word_bank": [
+    "effusive", "sentimental", "indulge", "circumspect", "eclectic",
+    "consistency", "naïve", "adroit", "exemplar", "enthralling",
+    "combative", "censorious", "publicize", "illuminate", "regress",
+    "perceptive", "deference", "censor", "curtail", "sparing",
+    "urbane", "scholarly", "gratuitous", "secluded", "hypothetical",
+    "extol", "acclaim", "elusive", "gull", "prescribed",
+    "mediator", "eloquent", "eventuality", "chronicle", "callous",
+    "diminutive", "disillusioned", "squandering", "refute", "terse",
+    "improvisational", "triumph", "conscientious", "concord", "intemperate",
+    "subversive", "sanguine", "vigor", "rational", "empathy"
+  ],
+  "question_bank": {
+    "effusive": "When the award was announced, she delivered an _____ thank-you speech full of praise and excitement. Her reaction was openly emotional rather than restrained.",
+    "circumspect": "Before sharing the rumor, he was _____ and checked the source twice. He chose his words carefully to avoid making a reckless claim.",
+    "eclectic": "Her playlist is _____, jumping from classical symphonies to hip-hop to folk songs. It reflects a taste drawn from many different styles rather than one genre.",
+    "adroit": "During the Q&A, she handled the hostile question with an _____ reply that defused tension. Her response was skillful and tactful, not aggressive.",
+    "exemplar": "The professor presented her study design as an _____ for the whole class to follow. It was a model example, not merely a decent attempt.",
+    "enthralling": "The documentary was so _____ that the audience forgot to check their phones. It held their attention from start to finish.",
+    "censorious": "He is so _____ that he constantly condemns harmless mistakes as moral failures. His comments sound judgmental rather than helpful.",
+    "publicize": "The company decided to _____ the new policy through press releases and social media. They wanted as many people as possible to hear about it.",
+    "regress": "After months of progress, the patient began to _____ and lost skills she had regained. Her condition moved backward instead of improving.",
+    "perceptive": "She noticed the slight hesitation in his voice and realized he was uneasy. Her unusually _____ observation caught what others missed.",
+    "deference": "In _____ to the senior surgeon’s preference, the team followed his protocol without argument. They showed respectful yielding to his authority, not fear.",
+    "curtail": "Because of budget cuts, the department had to _____ travel and reduce conference attendance. The goal was to limit the activity, not eliminate it entirely.",
+    "sparing": "The reviewer was _____ with praise and offered only one brief compliment. Most of the comments were reserved rather than enthusiastic.",
+    "urbane": "At the formal dinner, he remained _____ even when the conversation turned awkward. His manner was polished and socially refined, not stiff or rude.",
+    "scholarly": "Her article is thoroughly _____, citing primary sources and engaging with prior research. It reads like academic work rather than casual opinion.",
+    "gratuitous": "The film included a/an _____ violent scene that added nothing to the plot. It felt unnecessary and inserted only for shock value.",
+    "secluded": "They chose a/an _____ cabin far from roads and neighbors. The location was deliberately isolated, not merely quiet.",
+    "hypothetical": "Consider a/an _____ case where the drug is given at double the dose. The scenario is imagined for analysis, not an actual patient example.",
+    "extol": "In his introduction, he continued to _____ his mentor’s contributions to the field. He praised them highly and openly, not just mentioned them.",
+    "acclaim": "The novel received widespread _____ from critics and won several prizes. The word refers to public praise and approval, not a private compliment.",
+    "elusive": "Despite repeated tests, a clear diagnosis remained _____. The answer was hard to pin down and kept slipping away.",
+    "gull": "He wasn’t a/an _____; he checked every contract line before signing. No one could easily trick him into believing a scam.",
+    "prescribed": "The antibiotic was _____ for seven days, with a fixed dose and schedule. It was formally ordered by a clinician, not chosen casually.",
+    "mediator": "A neutral _____ met with both teams to help them reach an agreement. The role was to resolve conflict by facilitating compromise, not to judge.",
+    "refute": "She used the raw data to _____ the claim that the treatment always works. Her evidence directly disproved the argument rather than merely doubting it."
+  }
+}
