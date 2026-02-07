@@ -97,6 +97,7 @@ def make_new_quiz(set_id: str, set_data: dict):
     words = list(qb.keys())
 
     clear_answer_keys()
+    st.session_state.pop("last_result", None)
 
     items = [{"word": w, "prompt": qb[w]} for w in words]
     random.shuffle(items)
@@ -200,6 +201,7 @@ if st.sidebar.button("Start / New attempt (reshuffle)"):
     st.rerun()
 
 if st.sidebar.button("Change quiz set"):
+    st.session_state.pop("last_result", None)
     st.session_state.selected_set_id = None
     st.session_state.selected_set_data = None
     if "quiz_items" in st.session_state:
@@ -218,22 +220,67 @@ quiz_items = st.session_state.quiz_items
 # =========================
 st.subheader("Questions")
 
+wrong_words_set = set()
+r = st.session_state.get("last_result")
+
+# Only highlight if the stored result matches the current set + current quiz attempt
+if r and r.get("set_id") == set_id and r.get("quiz_id") == st.session_state.get("started_at"):
+    wrong_words_set = set(r.get("wrong_words", []))
+
 with st.form("quiz_form", clear_on_submit=False):
     for i, item in enumerate(quiz_items, start=1):
-        st.markdown(f"**{i}.** {item['prompt']}")
+        if item["word"] in wrong_words_set:
+            st.markdown(
+                f"""
+                <div style="
+                    background: rgba(255, 75, 75, 0.12);
+                    border-left: 6px solid #ff4b4b;
+                    padding: 0.6rem 0.8rem;
+                    border-radius: 0.5rem;
+                    margin-bottom: 0.25rem;
+                ">
+                    <b>{i}.</b> {item['prompt']}
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        else:
+            st.markdown(f"**{i}.** {item['prompt']}")
+
         st.text_input(" ", key=f"ans_{set_id}_{item['word']}", label_visibility="collapsed")
         st.write("")
 
     submitted = st.form_submit_button("Submit")
 
 if submitted:
+    wrong_nums = []
+    wrong_words = []
     correct = 0
-    for item in quiz_items:
+
+    for i, item in enumerate(quiz_items, start=1):
         word = item["word"]
         user = (st.session_state.get(f"ans_{set_id}_{word}") or "").strip()
         ok = (user.lower() == word.lower()) if IGNORE_CASE else (user == word)
+
         if ok:
             correct += 1
+        else:
+            wrong_nums.append(i)
+            wrong_words.append(word)  # only for highlighting; not displayed
 
-    st.success("Submitted.")
-    st.success(f"{set_data['title']} — Score: {correct}/{len(quiz_items)}")
+    st.session_state.last_result = {
+        "set_id": set_id,
+        "quiz_id": st.session_state.get("started_at"),
+        "title": set_data["title"],
+        "correct": correct,
+        "total": len(quiz_items),
+        "wrong_nums": wrong_nums,
+        "wrong_words": wrong_words
+    }
+
+    st.rerun()  # rerun so the questions render with red highlights
+    
+r = st.session_state.get("last_result")
+if r and r.get("set_id") == set_id and r.get("quiz_id") == st.session_state.get("started_at"):
+    wrong_str = ", ".join(map(str, r["wrong_nums"])) if r["wrong_nums"] else "None"
+    st.success(f"{r['title']} — Score: {r['correct']}/{r['total']} — Incorrect #: {wrong_str}")
