@@ -13,7 +13,7 @@
     "solicitous", "convoluted", "capricious", "inhibit", "altruistic"
   ],
  "question_bank": {
-    "undermine": "The suspect tried to delete the audit logs to _____ the inquiry. Without those records, investigators could not verify the timeline.",
+    "undermine": "The hacker altered timestamps to _____ the reliability of the database records. Investigators then had to treat every entry as potentially compromised.",
     "comprehensive": "The handbook is _____, covering enrollment, grading, and appeals in one place. Students rarely need to consult any other document.",
     "redundant": "Two separate paragraphs restate the same claim with different wording. The second one is _____ and should be cut.",
     "endorsed": "The policy was officially _____ by the board after a formal vote. It is now the organization’s stated position.",
