@@ -149,7 +149,15 @@ if "selected_set_id" not in st.session_state:
     st.session_state.selected_set_id = None
 
 if st.session_state.selected_set_id is None:
-    st.subheader("Choose a quiz set")
+    h1, h2 = st.columns([4, 1])
+    with h1:
+        st.subheader("Choose a quiz set")
+    with h2:
+        st.write("")  # small vertical align tweak
+        if st.button("Reload"):
+            st.cache_data.clear()
+            st.rerun()
+
 
     # IMPORTANT: titles are in filename order because available_sets is already sorted
     titles_in_file_order = [s["title"] for s in available_sets]
