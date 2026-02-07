@@ -1,0 +1,42 @@
+{
+  "title": "2000+Vocab_101-150",
+  "word_bank": [
+    "enervate", "ingenuous", "rancorous", "rancor", "augmented",
+    "mundane", "diplomatic", "sumptuous", "dominant", "prominence",
+    "manifest", "domineering", "fastidious", "prominent", "ingenuity",
+    "egotistical", "equivocate", "repudiate", "champion", "arduous",
+    "eradicate", "discipline", "convey", "tedious", "prevailing",
+    "prevalent", "enlighten", "antagonism", "discriminating", "banal",
+    "commercial", "pestilential", "toxic", "extravagant", "imaginative",
+    "oblivious", "affable", "compassion", "austere", "dedicated",
+    "momentous", "consequential", "daunting", "pestilience", "inevitable",
+    "skeptic", "bitterness", "bombastic", "reprehensible", "assert"
+  ],
+  "question_bank": {
+    "enervate": "The long, humid hike began to _____ the group within an hour. By the end of the day, even lifting their backpacks felt exhausting.",
+    "ingenuous": "Her question was sincere and slightly naive, not calculated or manipulative. The interviewer found her _____.",
+    "rancorous": "After the betrayal, his messages were not just critical; they were openly _____. Even years later, he spoke with deep, lasting resentment.",
+    "augmented": "The navigation app _____ the live camera view with arrows and street names. The overlay added digital labels directly onto the real scene.",
+    "diplomatic": "During the tense negotiation, she avoided blame and chose neutral wording. Her _____ tone kept both sides willing to keep talking.",
+    "sumptuous": "They served a/an _____ dinner with rich sauces, fine linens, and elegant table settings. It felt luxuriously comfortable rather than wasteful or showy.",
+    "domineering": "He didn't just lead the discussion; he controlled it and cut off anyone who disagreed. His _____ manner made teammates hesitant to speak.",
+    "fastidious": "She is a/an _____ proofreader who notices a single misplaced comma immediately. Even minor formatting errors bother her.",
+    "ingenuity": "With no proper tools, he used a paperclip to repair the broken latch. The clever, practical workaround showed real _____.",
+    "egotistical": "He kept steering every topic back to his awards and demanded constant praise. The audience grew tired of his _____ attitude.",
+    "equivocate": "When asked whether he supported the plan, he refused to give a clear yes or no. Instead, he tried to _____ with vague, slippery phrasing.",
+    "repudiate": "After the scandal, the company moved quickly to _____ the fake report. They publicly rejected it as false and unauthorized.",
+    "champion": "Even when it was unpopular, she continued to _____ the policy in public hearings. She actively supported it and argued for it repeatedly.",
+    "arduous": "The rescue climb was _____, requiring hours of hard physical effort on steep ice. It was exhausting work, not merely intimidating.",
+    "eradicate": "Health officials launched a campaign to _____ the invasive insect from the island. Their goal was complete elimination, not just a reduction.",
+    "convey": "A well-designed chart can _____ a complex trend faster than a long paragraph. Readers can understand the pattern at a glance.",
+    "prevalent": "The infection is highly _____ across multiple wards in the hospital. It appears in many places so frequently that staff must watch for it everywhere.",
+    "enlighten": "The workshop aimed to _____ the public about how vaccines are tested and monitored. Afterward, attendees understood the science much more clearly.",
+    "antagonism": "Years of rivalry created strong _____ between the two research teams. Their hostility made cooperation nearly impossible.",
+    "discriminating": "A/an _____ judge can distinguish a truly strong argument from one that only sounds persuasive. She makes careful evaluations based on subtle differences.",
+    "banal": "The essay relied on _____ phrases and predictable clichés. Nothing in it felt fresh or original.",
+    "pestilential": "After the flood, a/an _____ odor rose from rotting debris and sewage. Officials warned residents to avoid the contaminated area.",
+    "austere": "The room was _____, with bare walls and almost no decoration. The simplicity reflected a strict, no-frills lifestyle.",
+    "momentous": "Signing the treaty was a/an _____ event that people in the region will remember for generations. Historians later described it as historic and unforgettable.",
+    "bombastic": "His speech used _____ language about destiny and glory, but it offered no concrete plan. The grand, inflated wording sounded impressive yet empty."
+  }
+}
