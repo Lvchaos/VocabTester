@@ -156,7 +156,7 @@ if st.session_state.selected_set_id is None:
 
     with b:
         st.write("")  # small vertical alignment nudge
-        if st.button("Reload test list", key="reload_test_list"):
+        if st.button("Reload", key="reload_test_list"):
             st.cache_data.clear()
             st.rerun()
 
